@@ -90,7 +90,23 @@ public class NumberTriangle {
      *
      */
     public int retrieve(String path) {
-        // TODO implement this method
+        NumberTriangle current = this;
+
+        // Iterate through each character in the path
+        for (char step : path.toCharArray()) {
+            if (step == 'l') {
+                current = current.left;
+            } else if (step == 'r') {
+                current = current.right;
+            }
+        }
+
+        // If the path is empty, current is 'this', and we return the root.
+        // Based on the assumption that the path is valid and less than the height,
+        // `current` should never be null here.
+        if (current != null) {
+            return current.getRoot();
+        }
         return -1;
     }
 
